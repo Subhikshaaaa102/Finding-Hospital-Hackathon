@@ -14,7 +14,10 @@ import io.cucumber.junit.CucumberOptions;
 				plugin= {"pretty", "html:reports/myreport.html", 
 						  "rerun:target/rerun.txt",
 						  "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-				tags="@sanity" 
+				tags="@sanity",
+				dryRun = false,
+				monochrome=true,
+				publish=true
 				//tags="@regression"
 				//tags="@sanity and @regression" 
 				//tags="@sanity and not @regression"
