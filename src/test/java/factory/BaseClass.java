@@ -47,7 +47,7 @@ public class BaseClass {
 			        System.out.println("No matching browser");
 			}
 	      
-	       driver = new RemoteWebDriver(new URL("http://192.168.139.99:4444"),capabilities);
+	       driver = new RemoteWebDriver(new URL("http://192.168.1.7:4444"),capabilities);
 			
 		}
 		else if(getProperties().getProperty("execution_env").equalsIgnoreCase("local"))
