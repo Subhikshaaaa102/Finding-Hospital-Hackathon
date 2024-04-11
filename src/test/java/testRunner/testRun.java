@@ -13,7 +13,6 @@ import io.cucumber.junit.CucumberOptions;
 				glue="stepDefinitions",
 				plugin= {"pretty", "html:reports/myreport.html", 
 						  "rerun:target/rerun.txt",
-						  "html:target/CucumberTestReport.html",
 						  "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
 				tags="@sanity" 
 				//tags="@regression"
