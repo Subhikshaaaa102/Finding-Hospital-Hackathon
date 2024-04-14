@@ -38,7 +38,7 @@ public class TC_01_Top5Doctors {
 		BaseClass.getLogger().info("****Selecting from the city dropdown****");
 		sp.cityDropDown();
 		
-		BaseClass.getLogger().info("****Entering 	the speciality****");
+		BaseClass.getLogger().info("****Entering the speciality****");
 		Thread.sleep(5000);
 		sp.speciality(BaseClass.getProperties().getProperty("speciality"));
 		
@@ -76,10 +76,11 @@ public class TC_01_Top5Doctors {
 	@Then("the user should able to get the doctors list")
 	public void the_user_should_able_to_get_the_doctors_list() throws InterruptedException, IOException {
 		
-		BaseClass.getLogger().info("Fetching the details of the doctors");
+		BaseClass.getLogger().info("****Fetching the details of the doctors****");
 		doc = new top5Doctors(BaseClass.getDriver());
 		List<WebElement>doctor=doc.doctors();
 		
+		BaseClass.getLogger().info("****Iterating the loop to fetch 5 doctors****");
 		for(int i=1; i<6; i++) { 
 			
 			BaseClass.getLogger().info("Doctor: "+i);
@@ -88,14 +89,17 @@ public class TC_01_Top5Doctors {
 			Set<String>child = BaseClass.getDriver().getWindowHandles();
 			List<String> child_handle = new ArrayList<String>(child);
 			
+			BaseClass.getLogger().info("****Switched to child handle****");
 			BaseClass.getDriver().switchTo().window(child_handle.get(1));
 			Thread.sleep(3000);
 			String doctors_details = doc.details();
 			System.out.println(doctors_details+"\n");
-			
+
+			BaseClass.getLogger().info("****Fetching the details of the doctor****");
 			doctorsList.add(doctors_details);
 			
 			BaseClass.getDriver().close();
+			BaseClass.getLogger().info("****Switched to parent handle****");
 			BaseClass.getDriver().switchTo().window(child_handle.get(0));
 		}
 		

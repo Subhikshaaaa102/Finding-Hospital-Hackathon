@@ -9,13 +9,16 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-
+//Create an Excel File and to write data to it
 public class ExcelUtility {
 	public static XSSFWorkbook wb;
 	public static XSSFSheet s;
 	public static XSSFSheet s1;
 	public static FileOutputStream file;
+	
+	//Initialization
 	public static void excelUtility() throws FileNotFoundException {
+		
 		String path = System.getProperty("user.dir")+"\\TestData\\FindingHospital.xlsx";
 		file = new FileOutputStream(path);
 		wb=new XSSFWorkbook();
@@ -24,6 +27,7 @@ public class ExcelUtility {
 		
 	}
 	
+	//Iterates over the doctor list and writes each doctor’s details in a new row
 	public static void output1(List<String> doctor) throws FileNotFoundException {
 		ExcelUtility.excelUtility();
 		XSSFRow row1 = s.createRow(0);
@@ -33,6 +37,8 @@ public class ExcelUtility {
 			rows.createCell(0).setCellValue(doctor.get(row-1));
 		}
 	}	
+	
+	//Iterates over the surgery list and writes each surgery in a new row 
 	public static void output2(List<String> surgery) {
 		XSSFRow row2 = s1.createRow(0);
 		row2.createCell(0).setCellValue("Available surgery");
@@ -42,6 +48,7 @@ public class ExcelUtility {
 		}
 	}
 	
+	//Writes all the changes to the file
 	public static void closeExcel() throws IOException {
 		wb.write(file);
 		wb.close();

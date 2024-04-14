@@ -22,7 +22,7 @@
                                 <include>**\testRun.java</include>
                             </includes> 
                             <testFailureIgnore>true</testFailureIgnore>
-                        </configuration>
+                </configuration>
   			</plugin>
   		</plugins>
   	</pluginManagement>

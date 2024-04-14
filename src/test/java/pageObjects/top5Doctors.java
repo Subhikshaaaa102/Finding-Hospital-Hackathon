@@ -12,17 +12,20 @@ public class top5Doctors extends basePage{
 		super(driver);
 	}
 	
+	//Locate the Doctors List
 	@FindBy(xpath="//*[@class='listing-doctor-card']//*[@class='info-section']/a")
 	List<WebElement> doctors;
 	
 	public List<WebElement> top5Doctors = new ArrayList<WebElement>();
+	//Iterating for top 5 doctors
 	public List<WebElement> doctors(){
-		for(int i=1; i<6; i++) { 
+		for(int i=0; i<5; i++) { 
 			top5Doctors.add(doctors.get(i));
 		}
 		return top5Doctors;
 	}
 	
+	//Locate the Details of the Doctors
 	@FindBy(xpath="//*[@class='pure-u-20-24']")
 	WebElement doctorDetails;
 	public String details() {	

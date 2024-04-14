@@ -9,6 +9,7 @@ public class searchPage extends basePage {
 		super(driver);
 	}
 	
+	//Locator to locate city input box
 	@FindBy(xpath = "(//input[@class='c-omni-searchbox c-omni-searchbox--small'])[1]")
 	public WebElement city;
 	public void city(String cities) throws InterruptedException {
@@ -19,6 +20,7 @@ public class searchPage extends basePage {
 		
 	}
 	
+	//Locator to locate city from dropDown
 	@FindBy(xpath="(//*[@class='c-omni-suggestion-group']//div[1])[1]")
 	WebElement cityDropDown;
 	public void cityDropDown() throws InterruptedException {
@@ -26,6 +28,7 @@ public class searchPage extends basePage {
 		cityDropDown.click();
 	}
 	
+	//Locator to locate specialty input box
 	@FindBy(xpath = "//*[@data-qa-id='omni-searchbox-keyword']")
 	WebElement speciality;
 	public void speciality(String speciality2) throws InterruptedException {
@@ -33,6 +36,7 @@ public class searchPage extends basePage {
 		speciality.sendKeys(speciality2);
 	}
 	
+	//Locator to locate specialty from dropDown
 	@FindBy(xpath="(//*[@class='c-omni-suggestion-item'])[1]")
 	WebElement specialityDropDown;
 	public void specialityDropDown() throws InterruptedException {

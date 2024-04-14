@@ -26,17 +26,22 @@ public class BaseClass {
  	     
 	public static WebDriver initilizeBrowser() throws IOException
 	{
+		// Grid implementation if environment is remote
 		if(getProperties().getProperty("execution_env").equalsIgnoreCase("remote"))
 		{
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			
-			//os
-			if (getProperties().getProperty("os").equalsIgnoreCase("windows")) {
+			//OS selection with the help of DesiredCapabilities class
+			if (getProperties().getProperty("os").equalsIgnoreCase("windows")) 
+			{
 			    capabilities.setPlatform(Platform.WIN11);
-			} else {
+			} 
+			else 
+			{
 			    System.out.println("No matching OS..");
-			      }
-			//browser
+			}
+			
+			//Browser selection with the help of DesiredCapabilities class
 			if (getProperties().getProperty("browser").equalsIgnoreCase("chrome")) {
 			        capabilities.setBrowserName("chrome");
 			}
@@ -47,9 +52,12 @@ public class BaseClass {
 			        System.out.println("No matching browser");
 			}
 	      
+			//Specifying the hub url on which the hub is running
 	       driver = new RemoteWebDriver(new URL("http://192.168.1.7:4444"),capabilities);
 			
 		}
+		
+		// If environment is local
 		else if(getProperties().getProperty("execution_env").equalsIgnoreCase("local"))
 			{
 				if(getProperties().getProperty("browser").equalsIgnoreCase("chrome")) 
@@ -63,6 +71,7 @@ public class BaseClass {
 			        System.out.println("No matching browser");
 				}
 			}
+		
 		 driver.manage().deleteAllCookies(); 
 		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
 		 driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
@@ -75,7 +84,8 @@ public class BaseClass {
 	}
 
 	public static Properties getProperties() throws IOException
-	{		 
+	{	
+		//Script to load the Properties file
 	   FileReader file=new FileReader(System.getProperty("user.dir")+"\\src\\test\\resources\\DataProperties.properties");	
 	   p=new Properties();
 	   p.load(file);
@@ -83,21 +93,28 @@ public class BaseClass {
 	}
 	
 	public static Logger getLogger() 
-	{		 
+	{	
+		//Loading the log4j2 file
 		logger=LogManager.getLogger(); //Log4j
 		return logger;
 	}
 	
 	public static String randomString() {
+		
+		//Generates random String
 		String generateString = RandomStringUtils.randomAlphabetic(7);
 		return generateString;
 	}
 	public static String randomNumber() {
+		
+		//Generates the Random Number
 		String generateString = "9" + RandomStringUtils.randomNumeric(9);
 		return generateString;
 	}
 
 	public void Scroll(WebElement e) {
+		
+		//To Scroll unto a particular WebElement
 		js=(JavascriptExecutor)driver;
 		js.executeScript("arguments [0].scrollIntoView();", e);
 	}

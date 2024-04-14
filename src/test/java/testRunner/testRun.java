@@ -7,21 +7,19 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-				features= {".//Feature/"},
-				//features= {".//Feature//F1_top5Doctors.feature",".//Feature//F2_surgeryPage.feature",
-				//		".//Feature//F3_forCorporate.feature"},
-				glue="stepDefinitions",
-				plugin= {"pretty", "html:reports/myreport.html", 
-						  "rerun:target/rerun.txt",
-						  "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-				tags="@sanity",
-				dryRun = false,
-				monochrome=true,
-				publish=true
+				features= {".//Feature/"},//Executes all the files from the package
+				glue="stepDefinitions",//To Execute the runner class
+				plugin= {"pretty", "html:reports/myreport.html",//Html report 
+						  "rerun:target/rerun.txt",//Failed testCase
+						  "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},//Extent report
+				tags="@sanity",//Grouping
 				//tags="@regression"
 				//tags="@sanity and @regression" 
 				//tags="@sanity and not @regression"
 				//tags="@sanity or @regression"
+				dryRun = false,
+				monochrome=true,//To remove junk character
+				publish=true//publish the report
 				)
 public class testRun {
 
